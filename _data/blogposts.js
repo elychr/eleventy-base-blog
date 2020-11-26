@@ -16,7 +16,7 @@ async function getAllBlogposts() {
     while (makeNewQuery) {
         try {
             // initiate fetch
-            const data = await fetch('https://api.tpfc.co.nz/blog-posts')
+            const data = await fetch('https://api.tpfc.co.nz/blog-posts?_sort=CreatedAt:DESC')
 
             // store the JSON response when promise resolves
             const response = await data.json();
@@ -50,7 +50,7 @@ async function getAllBlogposts() {
         return {
             id: item.id,
             title: item.Title,
-            slug: item.id,
+            slug: item.UrlRoute,
             body: item.Content,
             author: item.author,
             date: item.PublishedAt
